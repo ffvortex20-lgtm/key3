@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Vortex Key</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #020b18;
+  font-family: 'Orbitron', sans-serif;
+  overflow: hidden;
+  color: white;
+}
+
+/* PARTICULAS */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* TITULO */
+h1 {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 40px;
+  letter-spacing: 5px;
+}
+
+h1 span {
+  color: #3b82f6;
+}
+
+/* CARD */
+.box {
+  width: 350px;
+  margin: auto;
+  margin-top: 30px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(0, 20, 50, 0.85);
+  box-shadow: 0 0 40px #1e90ff33;
+  text-align: center;
+}
+
+/* AVATAR */
+.avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid #3b82f6;
+  margin: 15px auto;
+  background: url('avatar.png') center/cover;
+}
+
+/* BOTÃO */
+.btn {
+  background: #2563eb;
+  border: none;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  color: white;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #2563eb;
+}
+
+/* KEY BOX */
+.keybox {
+  margin-top: 15px;
+  padding: 12px;
+  border: 1px solid #1e40af;
+  border-radius: 10px;
+  background: #020b18;
+  color: #3b82f6;
+}
+
+/* COPY */
+.copy {
+  margin-top: 10px;
+  background: transparent;
+  border: 1px solid #3b82f6;
+}
+
+/* CANAL */
+.channel {
+  margin-top: 20px;
+}
+
+.channel button {
+  background: #10b981;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<h1>GERADOR DE <span>KEYS</span></h1>
+
+<div class="box">
+  <p>GERAR SUA KEY</p>
+
+  <div class="avatar"></div>
+
+  <button class="btn" onclick="gerar()">⚡ GERAR SUA KEY</button>
+
+  <p style="margin-top:15px; font-size:12px;">SUA KEY GERADA</p>
+
+  <div id="key" class="keybox">********</div>
+
+  <button class="btn copy" onclick="copiar()">📋 COPIAR</button>
+
+  <div class="channel">
+    <p style="font-size:12px;">CANAL OFICIAL PARA SEGUIR</p>
+
+    <button onclick="window.open('https://chat.whatsapp.com/DrlOTtZar6hIk7wRf9dMVn')">
+      🚀 Entrar no Grupo
+    </button>
+  </div>
+</div>
+
+<script>
+function gerar() {
+  document.getElementById("key").innerText = "Vortex23";
+}
+
+function copiar() {
+  const key = document.getElementById("key").innerText;
+
+  navigator.clipboard.writeText(key).then(() => {
+    alert("✔ Key copiada!");
+  });
+}
+</script>
+
+<!-- PARTICULAS -->
+<script>
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: Math.random() - 0.5,
+    vy: Math.random() - 0.5
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    ctx.fillStyle = "#3b82f6";
+    ctx.fill();
+  });
+
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
+
+</body>
+</html>
