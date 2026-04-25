@@ -15,7 +15,7 @@
             overflow: hidden;
             color: white;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
         }
 
@@ -26,115 +26,136 @@
             z-index: -1;
         }
 
-        h1 {
-            margin-top: 50px;
-            font-size: 48px;
-            letter-spacing: 8px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        h1 span {
-            color: #3b82f6;
-        }
-
         /* CARD PRINCIPAL */
         .box {
-            width: 450px;
-            padding: 40px;
+            width: 420px;
+            padding: 40px 20px;
             border-radius: 20px;
             background: rgba(4, 12, 28, 0.7);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
             text-align: center;
             backdrop-filter: blur(10px);
         }
 
-        .box p {
+        .box h2 {
+            font-size: 18px;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        /* AVATAR COM GLOW */
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 2px solid #3b82f6;
+            margin: 0 auto 25px;
+            background: url('https://i.pinimg.com/736x/2b/df/03/2bdf03154db67437eb86fb86bd90db14.jpg') center/cover no-repeat;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+        }
+
+        /* BOTÃO GERAR */
+        .btn-main {
+            background: linear-gradient(90deg, #1e40af, #2563eb);
+            border: none;
+            padding: 14px;
+            width: 85%;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto 25px;
+            transition: 0.3s;
             font-size: 14px;
+        }
+
+        .btn-main:hover {
+            filter: brightness(1.2);
+            transform: translateY(-2px);
+        }
+
+        /* CAMPO DA KEY GERADA */
+        .label-small {
+            font-size: 10px;
+            color: #888;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .key-display {
+            width: 85%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #1e40af;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            color: #3b82f6;
+            font-size: 18px;
+            font-weight: bold;
+            min-height: 22px;
+        }
+
+        /* BOTÃO COPIAR */
+        .btn-copy {
+            background: transparent;
+            border: 1px solid #1e40af;
+            color: #3b82f6;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin: 0 auto;
+        }
+
+        .btn-copy:hover {
+            background: rgba(59, 130, 246, 0.1);
+        }
+
+        /* SEÇÃO CANAL */
+        .divider {
+            margin: 30px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .channel-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
             color: #ccc;
         }
 
-        /* AVATAR */
-        .avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 2px solid #3b82f6;
-            margin: 0 auto 30px;
-            background: url('https://i.pinimg.com/736x/2b/df/03/2bdf03154db67437eb86fb86bd90db14.jpg') center/cover no-repeat;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
-        }
-
-        /* BOTÕES ESTILO DA IMAGEM */
-        .btn-main {
-            background: linear-gradient(90deg, #1e40af, #3b82f6);
-            border: none;
-            padding: 15px;
-            width: 80%;
+        .btn-channel {
+            background: #064e3b;
+            border: 1px solid #10b981;
+            padding: 12px;
+            width: 70%;
             border-radius: 8px;
             color: white;
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 0 auto;
             transition: 0.3s;
-        }
-
-        .btn-main:hover {
-            transform: scale(1.03);
-            filter: brightness(1.2);
-        }
-
-        .channel-section {
-            margin-top: 40px;
-        }
-
-        .btn-channel {
-            background: #065f46;
-            border: none;
-            padding: 12px;
-            width: 60%;
-            border-radius: 8px;
-            color: #10b981;
-            font-weight: bold;
-            font-family: 'Orbitron', sans-serif;
-            cursor: pointer;
-            border: 1px solid #10b981;
-            transition: 0.3s;
+            font-size: 12px;
         }
 
         .btn-channel:hover {
-            background: #064e3b;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
-        }
-
-        /* RODAPÉ E AVISO WINDOWS */
-        .footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 10px;
-            color: #555;
-        }
-
-        .footer span { color: #3b82f6; }
-
-        .activate-windows {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            text-align: right;
-            color: rgba(255, 255, 255, 0.3);
-            font-family: sans-serif;
-            font-size: 14px;
-            pointer-events: none;
+            background: #065f46;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
     </style>
 </head>
@@ -142,90 +163,79 @@
 
     <canvas id="bg"></canvas>
 
-    <h1>GERADOR DE <span>KEYS</span></h1>
-
     <div class="box">
-        <p>GERAR SUA KEY</p>
+        <h2>GERAR SUA KEY</h2>
         
         <div class="avatar"></div>
 
-        <button class="btn-main" onclick="alert('Key Gerada!')">
+        <button class="btn-main" onclick="gerarKey()">
             ⚡ GERAR SUA KEY
         </button>
 
-        <div class="channel-section">
-            <p>CANAL OFICIAL PARA SEGUIR</p>
-            <button class="btn-channel">
-                📞 Siga "CRACKED MODS"
-            </button>
-        </div>
-    </div>
+        <div class="label-small">SUA KEY GERADA</div>
+        <div class="key-display" id="keyOutput">---</div>
 
-    <div class="footer">Feito Por <span>Riquelme</span></div>
+        <button class="btn-copy" onclick="copiarKey()">
+            📋 COPIAR
+        </button>
 
-    <div class="activate-windows">
-        Ativar o Windows<br>
-        <span style="font-size: 12px;">Acesse Configurações para ativar o Windows.</span>
+        <div class="divider"></div>
+
+        <div class="channel-label">CANAL OFICIAL PARA SEGUIR</div>
+        <button class="btn-channel">
+            📞 Siga "CRACKED MODS"
+        </button>
     </div>
 
     <script>
+        // Função para gerar a Key
+        function gerarKey() {
+            const num = Math.floor(1000 + Math.random() * 9000);
+            const novaKey = "Key" + num;
+            document.getElementById("keyOutput").innerText = novaKey;
+        }
+
+        // Função para copiar
+        function copiarKey() {
+            const keyText = document.getElementById("keyOutput").innerText;
+            if(keyText === "---") return;
+            
+            navigator.clipboard.writeText(keyText);
+            const btn = document.querySelector(".btn-copy");
+            btn.innerText = "✔ COPIADO";
+            setTimeout(() => btn.innerText = "📋 COPIAR", 2000);
+        }
+
+        // Fundo Animado (Partículas)
         const canvas = document.getElementById("bg");
         const ctx = canvas.getContext("2d");
-
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-
         let particles = [];
-        const connectionDist = 150;
 
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 80; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5
+                vx: (Math.random() - 0.5) * 0.4,
+                vy: (Math.random() - 0.5) * 0.4
             });
         }
 
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             particles.forEach((p, i) => {
-                p.x += p.vx;
-                p.y += p.vy;
-
+                p.x += p.vx; p.y += p.vy;
                 if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
                 if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-                ctx.fillStyle = "#3b82f6";
+                ctx.fillStyle = "rgba(59, 130, 246, 0.5)";
                 ctx.fill();
-
-                // Desenha as linhas de conexão
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < connectionDist) {
-                        ctx.strokeStyle = `rgba(59, 130, 246, ${1 - dist / connectionDist - 0.5})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
             });
-
             requestAnimationFrame(draw);
         }
-
         draw();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
     </script>
 </body>
 </html>
