@@ -1,191 +1,231 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>Vortex Key</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Keys</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+        body {
+            margin: 0;
+            height: 100vh;
+            background: #010816;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-body {
-  margin: 0;
-  height: 100vh;
-  background: #020b18;
-  font-family: 'Orbitron', sans-serif;
-  overflow: hidden;
-  color: white;
-}
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
 
-/* PARTICULAS */
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
+        h1 {
+            margin-top: 50px;
+            font-size: 48px;
+            letter-spacing: 8px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
 
-/* TITULO */
-h1 {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 40px;
-  letter-spacing: 5px;
-}
+        h1 span {
+            color: #3b82f6;
+        }
 
-h1 span {
-  color: #3b82f6;
-}
+        /* CARD PRINCIPAL */
+        .box {
+            width: 450px;
+            padding: 40px;
+            border-radius: 20px;
+            background: rgba(4, 12, 28, 0.7);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
 
-/* CARD */
-.box {
-  width: 350px;
-  margin: auto;
-  margin-top: 30px;
-  padding: 30px;
-  border-radius: 20px;
-  background: rgba(0, 20, 50, 0.85);
-  box-shadow: 0 0 40px #1e90ff33;
-  text-align: center;
-}
+        .box p {
+            font-size: 14px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
 
-/* AVATAR */
-.avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  border: 2px solid #3b82f6;
-  margin: 15px auto;
-  background: url('avatar.png') center/cover;
-}
+        /* AVATAR */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #3b82f6;
+            margin: 0 auto 30px;
+            background: url('https://i.pinimg.com/736x/2b/df/03/2bdf03154db67437eb86fb86bd90db14.jpg') center/cover no-repeat;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+        }
 
-/* BOTÃO */
-.btn {
-  background: #2563eb;
-  border: none;
-  padding: 12px;
-  width: 100%;
-  border-radius: 10px;
-  color: white;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+        /* BOTÕES ESTILO DA IMAGEM */
+        .btn-main {
+            background: linear-gradient(90deg, #1e40af, #3b82f6);
+            border: none;
+            padding: 15px;
+            width: 80%;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+            transition: 0.3s;
+        }
 
-.btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #2563eb;
-}
+        .btn-main:hover {
+            transform: scale(1.03);
+            filter: brightness(1.2);
+        }
 
-/* KEY BOX */
-.keybox {
-  margin-top: 15px;
-  padding: 12px;
-  border: 1px solid #1e40af;
-  border-radius: 10px;
-  background: #020b18;
-  color: #3b82f6;
-}
+        .channel-section {
+            margin-top: 40px;
+        }
 
-/* COPY */
-.copy {
-  margin-top: 10px;
-  background: transparent;
-  border: 1px solid #3b82f6;
-}
+        .btn-channel {
+            background: #065f46;
+            border: none;
+            padding: 12px;
+            width: 60%;
+            border-radius: 8px;
+            color: #10b981;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            border: 1px solid #10b981;
+            transition: 0.3s;
+        }
 
-/* CANAL */
-.channel {
-  margin-top: 20px;
-}
+        .btn-channel:hover {
+            background: #064e3b;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+        }
 
-.channel button {
-  background: #10b981;
-}
-</style>
+        /* RODAPÉ E AVISO WINDOWS */
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 10px;
+            color: #555;
+        }
+
+        .footer span { color: #3b82f6; }
+
+        .activate-windows {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            text-align: right;
+            color: rgba(255, 255, 255, 0.3);
+            font-family: sans-serif;
+            font-size: 14px;
+            pointer-events: none;
+        }
+    </style>
 </head>
-
 <body>
 
-<canvas id="bg"></canvas>
+    <canvas id="bg"></canvas>
 
-<h1>GERADOR DE <span>KEYS</span></h1>
+    <h1>GERADOR DE <span>KEYS</span></h1>
 
-<div class="box">
-  <p>GERAR SUA KEY</p>
+    <div class="box">
+        <p>GERAR SUA KEY</p>
+        
+        <div class="avatar"></div>
 
-  <div class="avatar"></div>
+        <button class="btn-main" onclick="alert('Key Gerada!')">
+            ⚡ GERAR SUA KEY
+        </button>
 
-  <button class="btn" onclick="gerar()">⚡ GERAR SUA KEY</button>
+        <div class="channel-section">
+            <p>CANAL OFICIAL PARA SEGUIR</p>
+            <button class="btn-channel">
+                📞 Siga "CRACKED MODS"
+            </button>
+        </div>
+    </div>
 
-  <p style="margin-top:15px; font-size:12px;">SUA KEY GERADA</p>
+    <div class="footer">Feito Por <span>Riquelme</span></div>
 
-  <div id="key" class="keybox">********</div>
+    <div class="activate-windows">
+        Ativar o Windows<br>
+        <span style="font-size: 12px;">Acesse Configurações para ativar o Windows.</span>
+    </div>
 
-  <button class="btn copy" onclick="copiar()">📋 COPIAR</button>
+    <script>
+        const canvas = document.getElementById("bg");
+        const ctx = canvas.getContext("2d");
 
-  <div class="channel">
-    <p style="font-size:12px;">CANAL OFICIAL PARA SEGUIR</p>
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    <button onclick="window.open('https://chat.whatsapp.com/DrlOTtZar6hIk7wRf9dMVn')">
-      🚀 Entrar no Grupo
-    </button>
-  </div>
-</div>
+        let particles = [];
+        const connectionDist = 150;
 
-<script>
-function gerar() {
-  document.getElementById("key").innerText = "Vortex23";
-}
+        for (let i = 0; i < 100; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.5,
+                vy: (Math.random() - 0.5) * 0.5
+            });
+        }
 
-function copiar() {
-  const key = document.getElementById("key").innerText;
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach((p, i) => {
+                p.x += p.vx;
+                p.y += p.vy;
 
-  navigator.clipboard.writeText(key).then(() => {
-    alert("✔ Key copiada!");
-  });
-}
-</script>
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
-<!-- PARTICULAS -->
-<script>
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+                ctx.fillStyle = "#3b82f6";
+                ctx.fill();
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+                // Desenha as linhas de conexão
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < connectionDist) {
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${1 - dist / connectionDist - 0.5})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
 
-let particles = [];
+            requestAnimationFrame(draw);
+        }
 
-for (let i = 0; i < 80; i++) {
-  particles.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    vx: Math.random() - 0.5,
-    vy: Math.random() - 0.5
-  });
-}
+        draw();
 
-function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-  particles.forEach(p => {
-    p.x += p.vx;
-    p.y += p.vy;
-
-    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
-    ctx.fillStyle = "#3b82f6";
-    ctx.fill();
-  });
-
-  requestAnimationFrame(draw);
-}
-
-draw();
-</script>
-
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
 </body>
 </html>
